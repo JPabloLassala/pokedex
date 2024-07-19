@@ -7,7 +7,7 @@ const router = createBrowserRouter([
     path: "/pokedex",
     element: <RootLayout />,
     children: [
-      { index: true, element: <p className="text-blue-500">index</p> },
+      { index: true, element: <PokemonPage /> },
       { path: "pokemon", element: <PokemonPage /> },
       { path: "items", element: <p>items</p> },
     ],
