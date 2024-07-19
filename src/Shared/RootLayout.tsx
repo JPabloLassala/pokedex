@@ -1,16 +1,15 @@
 import { Outlet } from "react-router-dom";
 import { Navbar } from "./Navbar";
 import { Header } from "./Header";
-import { Hero } from "./Hero";
 
 export function RootLayout() {
   return (
-    <div className="flex flex-col">
-      <Header>
-        <Hero />
-        <Navbar />
-        <div></div>
-      </Header>
+    <div className="flex flex-col items-center bg-sky-50 w-full">
+      <div className="w-3/4">
+        <Header>
+          <Navbar />
+        </Header>
+      </div>
       <Outlet />
     </div>
   );
