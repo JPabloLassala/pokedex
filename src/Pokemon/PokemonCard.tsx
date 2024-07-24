@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { Pokemon } from "../Schemas";
-import { Badge, Container, Paragraph } from "../Shared";
-import { TypeColor } from "../Constants/TypeColor";
+import { Container, P } from "../Shared";
+import { PokemonTypes } from "./PokemonTypes";
 
 export function PokemonCard({
   pokemon,
@@ -25,19 +25,14 @@ export function PokemonCard({
         </div>
       </div>
       <Container className="w-full h-full flex flex-col items-center justify-center">
-        <Paragraph bold gray size="sm">
+        <P bold gray size="sm">
           &#8470; {pokemon.id}
-        </Paragraph>
-        <Paragraph bold>{_.capitalize(pokemon.name)}</Paragraph>
+        </P>
+        <P bold className="capitalize">
+          {pokemon.name}
+        </P>
         <div className="w-full flex flex-row justify-center items-center gap-2">
-          {pokemon.types.map((type) => (
-            <Badge
-              key={type.type.name}
-              label={type.type.name.toUpperCase()}
-              bgColor={TypeColor[type.type.name].bg}
-              textColor={TypeColor[type.type.name].text}
-            />
-          ))}
+          <PokemonTypes pokemon={pokemon} />
         </div>
       </Container>
     </div>
