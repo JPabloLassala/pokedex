@@ -20,7 +20,7 @@ export function PokemonPage() {
   }, [selectedPokemon]);
 
   return (
-    <main className="mx-4 w-2/3 flex flex-col gap-2 mt-4 flex-wrap items-center">
+    <main className="flex flex-col gap-2 mt-4 flex-wrap items-center">
       <div className="flex flex-row w-full h-full">
         <div className={`flex flex-col ${isFullWidth} transition-all duration-500`}>
           <PokemonSearch />

@@ -16,7 +16,7 @@ export function PokemonCard({
 
   return (
     <div
-      className="flex flex-col items-center justify-center w-48 h-52 hover:cursor-pointer"
+      className="flex flex-col items-center justify-center w-1/4 px-2 py-2 h-52 hover:cursor-pointer"
       onClick={onSelectPokemon}
     >
       <div className="h-[40px] z-10">
