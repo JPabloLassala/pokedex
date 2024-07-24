@@ -36,7 +36,7 @@ export function PokemonDescription({ pokemon }: { pokemon: Pokemon }) {
       </div>
       <Container
         hidden={!pokemon}
-        className={`w-full h-full flex flex-col items-center pt-24 gap-2 px-6 ${hiddenContents}`}
+        className={`w-full h-full flex flex-col items-center pt-24 gap-2 px-6 overflow-x-hidden ${hiddenContents}`}
       >
         {pokemon && (
           <>
@@ -58,7 +58,7 @@ export function PokemonDescription({ pokemon }: { pokemon: Pokemon }) {
             <P size="sm" className={hiddenText}>
               {pokemonDescription}
             </P>
-            <div className="flex flex-row gap-2">
+            <div className={`flex flex-row gap-2 ${hiddenContents}`}>
               <PokemonAbilities pokemon={pokemon} />
             </div>
           </>
