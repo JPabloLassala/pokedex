@@ -7,6 +7,12 @@ export default {
         header: ["Rubik"],
         body: ["Source Sans"],
       },
+      colors: {
+        hiddenAbility: "#f2f4f9",
+        hiddenAbilityBorder: "#9d5856",
+        ability: "#f8fafd",
+        abilityBorder: "#b9b9d6",
+      },
     },
   },
   plugins: [],
