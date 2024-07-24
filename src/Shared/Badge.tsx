@@ -1,19 +1,19 @@
+import { ReactNode } from "react";
+
 export function Badge({
-  label,
   bgColor,
   textColor,
+  children,
   className = "",
 }: {
-  label: string;
   bgColor: string;
   textColor: string;
+  children: ReactNode;
   className?: string;
 }) {
   return (
-    <p
-      className={`inline px-2 py-1 ${bgColor} ${textColor} rounded-lg text-xs font-bold font-header ${className}`}
-    >
-      <span>{label}</span>
-    </p>
+    <div className={`py-1 ${bgColor} ${textColor} text-xs font-bold font-header ${className}`}>
+      {children}
+    </div>
   );
 }
