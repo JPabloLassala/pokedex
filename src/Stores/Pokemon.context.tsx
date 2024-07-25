@@ -35,7 +35,7 @@ export function PokemonContextProvider({ children }: { children: ReactNode }) {
       return resetFilter();
     }
 
-    const filtered = pokemons.filter((p) => p.name.includes(name));
+    const filtered = pokemons.filter((p) => p.name.toUpperCase().includes(name.toUpperCase()));
     setFilteredPokemon(filtered);
   }
 
