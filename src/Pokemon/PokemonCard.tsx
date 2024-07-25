@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { Pokemon } from "../Schemas";
 import { Container, P } from "../Shared";
 import { PokemonTypes } from "./PokemonTypes";
