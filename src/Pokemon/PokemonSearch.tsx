@@ -9,6 +9,10 @@ export function PokemonSearch() {
   const searchRef = useRef<HTMLInputElement>(null);
   const { filterPokemon, resetFilter } = useContext(PokemonContext)!;
 
+  function handleFilterPokemon() {
+    filterPokemon(searchRef.current?.value || "");
+  }
+
   function handleEnterToSearch(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter") {
       filterPokemon(searchRef.current?.value || "");
@@ -37,7 +41,10 @@ export function PokemonSearch() {
       >
         <FontAwesomeIcon icon={faXmark} className="text-gray-500 h-1/2" />
       </button>
-      <button className="rounded-2xl bg-red-500 mr-4 h-3/4 w-auto aspect-square flex items-center border border-red-800">
+      <button
+        onClick={handleFilterPokemon}
+        className="rounded-2xl bg-red-500 mr-4 h-3/4 w-auto aspect-square flex items-center border border-red-800"
+      >
         <PokeballSvg className="stroke-white stroke-2 h-full w-full m-2" />
       </button>
     </Container>
