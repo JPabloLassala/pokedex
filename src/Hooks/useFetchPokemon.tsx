@@ -1,10 +1,11 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PokemonContext } from "../Stores";
 import { PokemonList } from "../Schemas/PokemonList";
 import { Pokemon } from "../Schemas";
 import axios, { AxiosResponse } from "axios";
 
 export function useFetchPokemon() {
+  const [isLoading, setIsLoading] = useState(false);
   const { setPokemonList, setPokemons, pokemonList } = useContext(PokemonContext)!;
   useEffect(() => {
     async function fetchPokemonList() {
@@ -30,10 +31,13 @@ export function useFetchPokemon() {
             return (res as PromiseFulfilledResult<AxiosResponse<Pokemon>>).value.data;
           }),
       );
+      setIsLoading(false);
     }
 
     if (pokemonList?.length) {
       fetchAllPokemonData(pokemonList);
     }
   }, [pokemonList]);
+
+  return { isLoading };
 }
