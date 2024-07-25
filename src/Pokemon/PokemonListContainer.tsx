@@ -3,11 +3,12 @@ import { PokemonCard } from "./PokemonCard";
 import { PokemonContext } from "../Stores";
 
 export function PokemonListContianer() {
-  const { pokemons, selectPokemon } = useContext(PokemonContext)!;
+  const { pokemons, selectPokemon, filteredPokemon } = useContext(PokemonContext)!;
+  const pokemonSource = filteredPokemon || pokemons;
 
   return (
     <div className={`justify-center flex flex-row flex-wrap transition-all`}>
-      {pokemons.map((p) => (
+      {pokemonSource.map((p) => (
         <PokemonCard key={p.id} pokemon={p} onSelectPokemon={() => selectPokemon(p.id)} />
       ))}
     </div>

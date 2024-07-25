@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { Pokemon } from "../Schemas";
 import { Container, P } from "../Shared";
 import { useFetchPokemonDescription } from "../Hooks/useFetchPokemonDescription";
