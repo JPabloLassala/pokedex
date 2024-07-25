@@ -16,7 +16,14 @@ const router = createBrowserRouter([
           </PokemonContextProvider>
         ),
       },
-      { path: "pokemon", element: <PokemonPage /> },
+      {
+        path: "pokemon",
+        element: (
+          <PokemonContextProvider>
+            <PokemonPage />
+          </PokemonContextProvider>
+        ),
+      },
       { path: "items", element: <p>items</p> },
     ],
   },
