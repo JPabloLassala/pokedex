@@ -14,8 +14,7 @@ export function PokemonDescription({
   onClose: () => void;
 }) {
   const [render, setRender] = useState(false);
-  const hiddenContainer = render ? "ml-2 w-1/3" : "w-0 scale-x-0 opacity-0";
-  const hiddenText = render ? "" : "scale-x-0";
+  const hiddenContainer = render ? "ml-2 w-1/3 max-w-1/3" : "w-0 scale-x-0 opacity-0";
   const { pokemonEntry, pokemonDescription } = useFetchPokemonDescription(pokemon);
 
   function handleClose() {
@@ -32,49 +31,54 @@ export function PokemonDescription({
   }, [pokemon]);
 
   return (
-    <div
-      className={`${hiddenContainer} transition-all duration-1000 origin-right whitespace-nowrap`}
-    >
-      <div className={`relative flex flex-col items-center`}>
-        <CloseDescriptionButon onClose={handleClose} />
-        <div className={`h-[100px] z-10`}>
-          <div className={`h-[200px] max-h-[200px]`}>
-            <img
-              src={pokemon?.sprites.other?.["official-artwork"].front_default}
-              className={`aspect-auto h-full`}
-            />
+    <div className={`${hiddenContainer} transition-all duration-1000 origin-right`}>
+      <div className="sticky top-0">
+        <div className="relative flex flex-col items-center">
+          <CloseDescriptionButon onClose={handleClose} />
+          <div className="h-[100px] z-10">
+            <div className="h-[200px] max-h-[200px]">
+              <img
+                src={pokemon?.sprites.other?.["official-artwork"].front_default}
+                className="aspect-auto h-full"
+              />
+            </div>
           </div>
+          <Container
+            hidden={!pokemon}
+            className="w-full flex flex-col items-center pt-24 gap-2 px-6 overflow-x-hidden"
+          >
+            {pokemon && (
+              <>
+                <P bold gray size="sm">
+                  &#8470; {pokemon.id}
+                </P>
+                <P bold size="lg" className="capitalize">
+                  {pokemon.name}
+                </P>
+                <P gray size="sm">
+                  {pokemonEntry}
+                </P>
+                <div className="flex flex-row gap-2">
+                  <PokemonTypes pokemon={pokemon} />
+                </div>
+                <P bold size="sm" className="uppercase">
+                  pokédex entry
+                </P>
+                <div className="max-h-10 overflow-y-hidden">
+                  <P size="sm" className="whitespace-normal">
+                    {pokemonDescription}
+                  </P>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <P size="sm" bold className="uppercase">
+                    Abilities
+                  </P>
+                  <PokemonAbilities pokemon={pokemon} />
+                </div>
+              </>
+            )}
+          </Container>
         </div>
-        <Container hidden={!pokemon} className="w-full flex flex-col items-center pt-24 gap-2 px-6">
-          {pokemon && (
-            <>
-              <P bold gray size="sm">
-                &#8470; {pokemon.id}
-              </P>
-              <P bold size="lg" className="capitalize">
-                {pokemon.name}
-              </P>
-              <P gray size="sm">
-                {pokemonEntry}
-              </P>
-              <div className="flex flex-row gap-2">
-                <PokemonTypes pokemon={pokemon} />
-              </div>
-              <P bold size="sm" className="uppercase">
-                pokédex entry
-              </P>
-              <P
-                size="sm"
-                className={`transition-all duration-500 whitespace-normal ${hiddenText}`}
-              >
-                {pokemonDescription}
-              </P>
-              <div className="flex flex-row gap-2">
-                <PokemonAbilities pokemon={pokemon} />
-              </div>
-            </>
-          )}
-        </Container>
       </div>
     </div>
   );
