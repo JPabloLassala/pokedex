@@ -9,8 +9,15 @@ import { PokemonListPlaceholder } from "./PokemonListPlaceholder";
 export function PokemonPage() {
   const { isLoading } = useFetchPokemon();
   const [isPokemonSelected, setIsPokemonSelected] = useState(false);
-  const { selectedPokemon } = useContext(PokemonContext)!;
+  const { selectedPokemon, unselectPokemon } = useContext(PokemonContext)!;
   const isFullWidth = isPokemonSelected ? "w-3/4" : "w-full";
+
+  function handleCloseDescription() {
+    setIsPokemonSelected(false);
+    setTimeout(() => {
+      unselectPokemon();
+    }, 500);
+  }
 
   useEffect(() => {
     if (selectedPokemon) {
@@ -23,7 +30,7 @@ export function PokemonPage() {
   return (
     <main className="flex flex-col gap-2 mt-4 flex-wrap items-center">
       <div className="flex flex-row w-full h-full">
-        <div className={`flex flex-col ${isFullWidth} transition-all duration-500`}>
+        <div className={`flex flex-col ${isFullWidth} transition-all duration-1000`}>
           {!isLoading && (
             <>
               <PokemonSearch />
@@ -32,7 +39,9 @@ export function PokemonPage() {
           )}
           {isLoading && <PokemonListPlaceholder />}
         </div>
-        {selectedPokemon && <PokemonDescription pokemon={selectedPokemon} />}
+        {selectedPokemon && (
+          <PokemonDescription pokemon={selectedPokemon} onClose={handleCloseDescription} />
+        )}
       </div>
     </main>
   );

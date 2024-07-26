@@ -10,6 +10,7 @@ export type PokemonContextType = {
   setPokemons: React.Dispatch<React.SetStateAction<Pokemon[]>>;
   setSelectedPokemon: React.Dispatch<React.SetStateAction<Pokemon | undefined>>;
   setPokemonList: React.Dispatch<React.SetStateAction<PokemonList[] | undefined>>;
+  unselectPokemon: () => void;
   selectPokemon: (id: number) => void;
   filterPokemon: (name: string) => void;
   resetFilter: () => void;
@@ -28,6 +29,10 @@ export function PokemonContextProvider({ children }: { children: ReactNode }) {
     if (selected) {
       setSelectedPokemon(selected);
     }
+  }
+
+  function unselectPokemon() {
+    setSelectedPokemon(undefined);
   }
 
   function filterPokemon(name: string) {
@@ -53,6 +58,7 @@ export function PokemonContextProvider({ children }: { children: ReactNode }) {
         filterPokemon,
         resetFilter,
         setSelectedPokemon,
+        unselectPokemon,
         selectPokemon,
         pokemonList,
         setPokemonList,
