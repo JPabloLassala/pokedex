@@ -7,7 +7,7 @@ export const TypeColor: Record<string, { bg: string; text: string }> = {
   ice: { bg: "bg-sky-400", text: "text-black" },
   fighting: { bg: "bg-orange-800", text: "text-black" },
   poison: { bg: "bg-fuchsia-400", text: "text-black" },
-  ground: { bg: "bg-amber-900", text: "text-black" },
+  ground: { bg: "bg-yellow-700", text: "text-white" },
   flying: { bg: "bg-sky-300", text: "text-black" },
   psychic: { bg: "bg-purple-600", text: "text-black" },
   bug: { bg: "bg-emerald-400", text: "text-black" },
