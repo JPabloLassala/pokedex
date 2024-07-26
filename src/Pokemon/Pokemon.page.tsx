@@ -5,6 +5,7 @@ import { useFetchPokemon } from "../Hooks/useFetchPokemon";
 import { useContext, useEffect, useState } from "react";
 import { PokemonContext } from "../Stores";
 import { PokemonListPlaceholder } from "./PokemonListPlaceholder";
+import { PokemonSearchPlaceholder } from "./PokemonSearchPlaceHolder";
 
 export function PokemonPage() {
   const { isLoading } = useFetchPokemon();
@@ -29,14 +30,11 @@ export function PokemonPage() {
 
   return (
     <main className="flex flex-col gap-2 mt-4 flex-wrap items-center">
+      {!isLoading && <PokemonSearch />}
+      {isLoading && <PokemonSearchPlaceholder />}
       <div className="flex flex-row w-full h-full">
         <div className={`flex flex-col ${isFullWidth} transition-all duration-1000`}>
-          {!isLoading && (
-            <>
-              <PokemonSearch />
-              <PokemonListContianer />
-            </>
-          )}
+          {!isLoading && <PokemonListContianer />}
           {isLoading && <PokemonListPlaceholder />}
         </div>
         {selectedPokemon && (
