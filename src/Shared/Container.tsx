@@ -12,6 +12,8 @@ export function Container({
   const Element = element;
   const hiddenClasses = hidden ? "" : "drop-shadow-md";
   return (
-    <Element className={`bg-white rounded-2xl ${hiddenClasses} ${className}`}>{children}</Element>
+    <Element className={`bg-white md:rounded-2xl ${hiddenClasses} ${className}`}>
+      {children}
+    </Element>
   );
 }

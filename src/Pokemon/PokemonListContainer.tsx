@@ -7,7 +7,7 @@ export function PokemonListContianer() {
   const pokemonSource = filteredPokemon || pokemons;
 
   return (
-    <div className={`justify-center flex flex-row flex-wrap transition-all`}>
+    <div className="justify-center flex flex-row flex-wrap">
       {pokemonSource.map((p) => (
         <PokemonCard key={p.id} pokemon={p} onSelectPokemon={() => selectPokemon(p.id)} />
       ))}

@@ -14,7 +14,9 @@ export function PokemonDescription({
   onClose: () => void;
 }) {
   const [render, setRender] = useState(false);
-  const hiddenContainer = render ? "ml-2 w-1/3 max-w-1/3" : "w-0 scale-x-0 opacity-0";
+  const hiddenContainer = render
+    ? "mx-2 md:ml-2 w-full md:w-1/3 md:max-w-1/3"
+    : "w-0 scale-x-0 opacity-0";
   const { pokemonEntry, pokemonDescription } = useFetchPokemonDescription(pokemon);
 
   function handleClose() {
@@ -31,7 +33,7 @@ export function PokemonDescription({
   }, [pokemon]);
 
   return (
-    <div className={`${hiddenContainer} transition-all duration-1000 origin-right`}>
+    <div className={`${hiddenContainer} transition-all duration-500 origin-right`}>
       <div className="sticky top-0">
         <div className="relative flex flex-col items-center">
           <CloseDescriptionButon onClose={handleClose} />
@@ -45,7 +47,7 @@ export function PokemonDescription({
           </div>
           <Container
             hidden={!pokemon}
-            className="w-full flex flex-col items-center pt-24 gap-2 px-6 overflow-x-hidden"
+            className="md:rounded-2xl rounded-lg w-full flex flex-col items-center pt-24 gap-2 px-6 overflow-x-hidden"
           >
             {pokemon && (
               <>
@@ -69,7 +71,7 @@ export function PokemonDescription({
                     {pokemonDescription}
                   </P>
                 </div>
-                <div className="flex flex-col items-center gap-2">
+                <div className="flex flex-col items-center gap-2 mb-4">
                   <P size="sm" bold className="uppercase">
                     Abilities
                   </P>

@@ -25,7 +25,7 @@ export function PokemonSearch() {
   }
 
   return (
-    <Container className="h-14 flex flex-row items-center w-full">
+    <Container className="w-[95%] sm:w-full sm:rounded-2xl rounded-xl h-14 flex flex-row items-center">
       <input
         type="text"
         ref={searchRef}

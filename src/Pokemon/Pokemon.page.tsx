@@ -11,7 +11,10 @@ export function PokemonPage() {
   const { isLoading } = useFetchPokemon();
   const [isPokemonSelected, setIsPokemonSelected] = useState(false);
   const { selectedPokemon, unselectPokemon } = useContext(PokemonContext)!;
-  const isFullWidth = isPokemonSelected ? "w-3/4" : "w-full";
+  const isFullWidth = isPokemonSelected ? "md:w-3/4" : "w-full";
+  const isSmZeroWidth = isPokemonSelected
+    ? "w-0 md:scale-x-100 scale-x-0 overflow-x-hidden"
+    : "w-full";
 
   function handleCloseDescription() {
     setIsPokemonSelected(false);
@@ -33,7 +36,9 @@ export function PokemonPage() {
       {!isLoading && <PokemonSearch />}
       {isLoading && <PokemonSearchPlaceholder />}
       <div className="flex flex-row w-full h-full">
-        <div className={`flex flex-col ${isFullWidth} transition-all duration-1000`}>
+        <div
+          className={`${isSmZeroWidth} flex flex-col ${isFullWidth} transition-all duration-500 origin-left`}
+        >
           {!isLoading && <PokemonListContianer />}
           {isLoading && <PokemonListPlaceholder />}
         </div>
