@@ -18,7 +18,7 @@ export function PokemonAbilities({ pokemon }: { pokemon: Pokemon }) {
             textColor="text-slate-800"
             className={`px-6 py-2 break-keep uppercase border rounded-full min-w-36 flex flex-row justify-center items-center ${borderClass}`}
           >
-            <p className="md:text-[calc((1vw_+_1vh)*0.40)]">{ability.ability.name}</p>
+            <p className="lg:text-[calc((1vw_+_1vh)*0.40)]">{ability.ability.name}</p>
             {isHidden && (
               <div>
                 <FontAwesomeIcon icon={faEyeSlash} className="ml-1" />

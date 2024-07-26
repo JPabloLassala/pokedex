@@ -15,7 +15,7 @@ export function PokemonDescription({
 }) {
   const [render, setRender] = useState(false);
   const hiddenContainer = render
-    ? "mx-2 md:ml-2 w-full md:w-1/3 md:max-w-1/3"
+    ? "mx-2 lg:ml-2 w-full lg:w-1/3 lg:max-w-1/3"
     : "w-0 scale-x-0 opacity-0";
   const { pokemonEntry, pokemonDescription } = useFetchPokemonDescription(pokemon);
 
@@ -47,7 +47,7 @@ export function PokemonDescription({
           </div>
           <Container
             hidden={!pokemon}
-            className="md:rounded-2xl rounded-lg w-full flex flex-col items-center pt-24 gap-2 px-6 overflow-x-hidden"
+            className="lg:rounded-2xl rounded-lg w-full flex flex-col items-center pt-24 gap-2 px-6 overflow-x-hidden"
           >
             {pokemon && (
               <>
